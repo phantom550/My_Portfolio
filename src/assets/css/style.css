@@ -198,7 +198,6 @@ form button:hover {
 
 .social-links a {
   margin-right: 16px;
-  font-size: 1.2em;
   color: var(--accent-primary);
   text-decoration: none;
   transition: color 0.3s var(--transition-curve);
@@ -206,6 +205,12 @@ form button:hover {
 
 .social-links a:hover {
   color: var(--accent-hover);
+}
+
+.social-links a svg {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
 }
 
 /* --- Footer --- */
