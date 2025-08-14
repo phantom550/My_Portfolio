@@ -1,0 +1,16 @@
+{
+  "name": "iportfolio-clone",
+  "version": "1.0.0",
+  "description": "A clone of the iPortfolio website showcasing personal projects and skills.",
+  "main": "src/index.html",
+  "scripts": {
+    "start": "live-server src",
+    "build": "echo 'Build process not defined yet.'"
+  },
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}

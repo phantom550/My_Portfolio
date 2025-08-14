@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<!-- The 'lang' attribute is crucial for accessibility, specifying the page's primary language. -->
+<html lang="en">
+<head>
+    <!-- Specifies the character encoding for the document. UTF-8 is the standard. -->
+    <meta charset="UTF-8">
+    <!-- Ensures the page is responsive and scales correctly on all devices. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- The title displayed in the browser tab. Important for SEO and user experience. -->
+    <title>Ayush Yadav's - Portfolio</title>
+    <!-- Links the external stylesheet that defines the look and feel of the page. -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- 
+      The <aside> element represents a portion of the document whose content is indirectly related to the main content.
+      It's perfect for a sidebar navigation.
+    -->
+    <aside class="sidebar" id="sidebar">
+        <div class="logo">
+            <a href="#home">Ayush Yadav</a>
+        </div>
+        <nav aria-label="Main Navigation">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#portfolio">My Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- This div wraps all the main content of the page, positioned next to the sidebar. -->
+    <div id="main-content">
+        <!-- 
+          The hamburger menu button, which is only visible on smaller screens.
+          - 'aria-label': Provides an accessible name for screen readers.
+          - 'aria-controls': Links this button to the element it controls (the sidebar).
+          - 'aria-expanded': Indicates whether the controlled element is currently expanded or collapsed.
+        -->
+        <button class="hamburger" id="hamburger-toggle" aria-label="Toggle navigation" aria-controls="sidebar" aria-expanded="false">&#9776;</button>
+
+        <!-- The <main> tag specifies the primary content of the document. -->
+        <main>
+            <!-- Home Section (Hero) -->
+            <section id="home" class="section hero" aria-labelledby="hero-heading">
+                <h1 id="hero-heading">Ayush Yadav</h1>
+                <p>Web Developer &amp; Designer</p>
+            </section>
+
+            <!-- About Section -->
+            <!-- 
+              Each <section> represents a distinct part of the page.
+              - 'aria-labelledby': Links the section to its heading for better screen reader navigation.
+              - 'animate-on-scroll': A custom class used by JavaScript to trigger scroll animations.
+            -->
+            <section id="about" class="section animate-on-scroll" aria-labelledby="about-heading">
+                <h2 id="about-heading">About Me</h2>
+                <p>
+                    Hi, I'm <strong>Ayush Yadav</strong>, a web developer and designer based in India.<br>
+                    I specialize in building modern, responsive websites and web applications.<br>
+                    My focus is on clean code, minimal design, and great user experience.
+                </p>
+            </section>
+
+            <!-- Skills Section -->
+            <section id="skills" class="section animate-on-scroll" aria-labelledby="skills-heading">
+                <h2 id="skills-heading">Skills</h2>
+                <ul class="skills-list">
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                    <li>Blender(3D Design,Modeling,Rendering)</li>
+                    <li>C language</li>
+                    <li>Java</li>
+                    <li>RDBMS</li>
+                    <li>Python</li>
+                    <li>UI/UX Design</li>
+                </ul>
+            </section>
+
+            <!-- Portfolio Section -->
+            <section id="portfolio" class="section animate-on-scroll" aria-labelledby="portfolio-heading">
+                <h2 id="portfolio-heading">My Portfolio</h2>
+                <div class="project-card">
+                    <h3>Personal Portfolio Website</h3>
+                    <p>A minimalist, responsive portfolio to showcase my work and skills. Built with HTML, CSS, and JavaScript.</p>
+                    <!-- 
+                      - 'target="_blank"': Opens the link in a new tab.
+                      - 'rel="noopener noreferrer"': A security measure to prevent the new tab from accessing the original page's window object.
+                    -->
+                    <a href="https://github.com/phantom550/My_Portfolio" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+                </div>
+                <div class="project-card">
+                    <h3>Student Ranker</h3>
+                    <p>Made the Frontend for this webpage with the help of HTML, CSS, and JavaScript.</p>
+                    <a href="https://student-ranker.onrender.com/" target="_blank" rel="noopener noreferrer">View Webpage</a>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="section animate-on-scroll" aria-labelledby="contact-heading">
+                <h2 id="contact-heading">Contact</h2>
+                <p>Let's connect! Feel free to reach out for collaborations or just to say hi.</p>
+                <!-- 
+                    Note: Using "mailto:" for a form action has limitations and depends on the user's local email client setup. 
+                    For a more robust solution, this form would typically submit to a server-side endpoint or a third-party service 
+                    like Formspree or Netlify Forms.
+                -->
+                <form action="mailto:ayushyadav@email.com" method="post" enctype="text/plain">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+
+                    <button type="submit">Send Message</button>
+                </form>
+                <!-- Social media links with appropriate aria-labels for accessibility. -->
+                <div class="social-links">
+                    <a href="https://github.com/ayushyadav/portfolio" target="_blank" rel="noopener noreferrer" aria-label="GitHub">GitHub</a>
+                    <a href="https://www.linkedin.com/in/ayush-yadav-333b72294/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
+                    <a href="mailto:ayushyadav@email.com" aria-label="Email">Email</a>
+                </div>
+            </section>
+        </main>
+        <!-- The <footer> contains site-wide information like copyright notices and secondary navigation links. -->
+        <footer id="footer">
+            <div class="footer-content">
+                <p>&copy; 2024 Ayush Yadav. All rights reserved.</p>
+                <ul class="footer-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#portfolio">My Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+    <!-- The main JavaScript file is linked at the end of the body to ensure the DOM is fully loaded before the script runs. -->
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
