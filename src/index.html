@@ -47,6 +47,18 @@
             <section id="home" class="section hero" aria-labelledby="hero-heading">
                 <h1 id="hero-heading">Ayush Yadav</h1>
                 <p>Web Developer &amp; Designer</p>
+                <!-- Social links are placed in the hero section for immediate visibility. -->
+                <div class="social-links">
+                    <a href="https://github.com/phantom550" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/ayush-yadav-333b72294/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><title>LinkedIn</title><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2ZM8 19H5v-9h3v9ZM6.5 8.25A1.75 1.75 0 1 1 8.25 6.5 1.75 1.75 0 0 1 6.5 8.25ZM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0 0 13 14.19a.66.66 0 0 0 .09.38V19h-3v-9h2.9v1.3a3.11 3.11 0 0 1 2.7-1.4c1.55 0 3.36.86 3.36 3.66Z"></path></svg>
+                    </a>
+                    <a href="mailto:ayushyadav913012@email.com" aria-label="Email">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><title>Email</title><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"></path></svg>
+                    </a>
+                </div>
             </section>
 
             <!-- About Section -->
@@ -90,12 +102,14 @@
                       - 'target="_blank"': Opens the link in a new tab.
                       - 'rel="noopener noreferrer"': A security measure to prevent the new tab from accessing the original page's window object.
                     -->
-                    <a href="https://ayush-yadav-portfolio.onrender.com/" target="_blank" rel="noopener noreferrer">Visit Webpage</a>
+                    <a href="https://ayush-yadav-portfolio.onrender.com/" target="_blank" rel="noopener noreferrer">Visit Webpage</a><br><br>
+                    <a href="https://github.com/phantom550/My_Portfolio" target="_blank" rel="noopener noreferrer">Visit Github</a>
                 </div>
                 <div class="project-card">
                     <h3>Student Ranker</h3>
                     <p>Made the Frontend for this webpage with the help of HTML, CSS, and JavaScript.</p>
-                    <a href="https://student-ranker.onrender.com/" target="_blank" rel="noopener noreferrer">Visit Webpage</a>
+                    <a href="https://student-ranker.onrender.com/" target="_blank" rel="noopener noreferrer">Visit Webpage</a><br><br>
+                    <a href="https://github.com/sumitpatel-2322/Student-ranker" target="_blank" rel="noopener noreferrer">Visit Github</a>
                 </div>
             </section>
 
@@ -104,11 +118,11 @@
                 <h2 id="contact-heading">Contact</h2>
                 <p>Let's connect! Feel free to reach out for collaborations or just to say hi.</p>
                 <!-- 
-                    Note: Using "mailto:" for a form action has limitations and depends on the user's local email client setup. 
-                    For a more robust solution, this form would typically submit to a server-side endpoint or a third-party service 
-                    like Formspree or Netlify Forms.
+                    Note: Using "mailto:" for a form action is a simple method but has limitations. It relies on the user having a 
+                    configured email client and does not provide a confirmation that the message was sent. For a more reliable and 
+                    professional solution, this form would typically submit to a server-side endpoint or a third-party service like Formspree or Netlify Forms.
                 -->
-                <form action="mailto:ayushyadav@email.com" method="post" enctype="text/plain">
+                <form action="mailto:ayushyadav913012@email.com" method="post" enctype="text/plain">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" placeholder="Your Name" required>
 
@@ -122,13 +136,13 @@
                 </form>
                 <!-- Social media links with appropriate aria-labels for accessibility. -->
                 <div class="social-links">
-                    <a href="https://github.com/ayushyadav/portfolio" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><title>GitHub</title><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.19.01-.82.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21-.15.46-.55.38A8.013 8.013 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path></svg>
+                    <a href="https://github.com/phantom550" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/></svg>
                     </a>
                     <a href="https://www.linkedin.com/in/ayush-yadav-333b72294/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><title>LinkedIn</title><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2ZM8 19H5v-9h3v9ZM6.5 8.25A1.75 1.75 0 1 1 8.25 6.5 1.75 1.75 0 0 1 6.5 8.25ZM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0 0 13 14.19a.66.66 0 0 0 .09.38V19h-3v-9h2.9v1.3a3.11 3.11 0 0 1 2.7-1.4c1.55 0 3.36.86 3.36 3.66Z"></path></svg>
                     </a>
-                    <a href="mailto:ayushyadav@email.com" aria-label="Email">
+                    <a href="mailto:ayushyadav913012@email.com" aria-label="Email">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><title>Email</title><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"></path></svg>
                     </a>
                 </div>

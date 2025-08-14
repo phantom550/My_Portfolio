@@ -24,11 +24,22 @@ document.addEventListener('DOMContentLoaded', () => {
         hamburger.addEventListener('click', () => {
             // The 'active' class controls the visibility of the sidebar (see style.css).
             sidebar.classList.toggle('active');
-            
+            // Add a class to the hamburger itself to control its state (e.g., position, icon).
+            hamburger.classList.toggle('toggled');
+
             // Update the aria-expanded attribute for accessibility.
             // This tells screen readers whether the navigation menu is open or closed.
             const isExpanded = sidebar.classList.contains('active');
             hamburger.setAttribute('aria-expanded', isExpanded);
+
+            // Change the icon from hamburger to 'X' and back, and update the accessible label.
+            if (isExpanded) {
+                hamburger.innerHTML = '&times;'; // Use the 'times' character for an X
+                hamburger.setAttribute('aria-label', 'Close navigation');
+            } else {
+                hamburger.innerHTML = '&#9776;'; // Hamburger icon
+                hamburger.setAttribute('aria-label', 'Toggle navigation');
+            }
         });
     }
 
@@ -56,6 +67,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (sidebar.classList.contains('active') && link.closest('.sidebar')) {
                 sidebar.classList.remove('active');
                 hamburger.setAttribute('aria-expanded', 'false');
+                // Also reset the hamburger button state to its default.
+                hamburger.classList.remove('toggled');
+                hamburger.innerHTML = '&#9776;';
+                hamburger.setAttribute('aria-label', 'Toggle navigation');
             }
         });
     });
