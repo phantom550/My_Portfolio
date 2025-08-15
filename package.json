@@ -1,14 +1,18 @@
 {
   "name": "iportfolio-clone",
   "version": "1.0.0",
-  "description": "A clone of the iPortfolio website showcasing personal projects and skills.",
+  "description": "A responsive personal portfolio website built with HTML, CSS, and vanilla JavaScript.",
   "main": "src/index.html",
   "scripts": {
     "start": "live-server src",
-    "build": "echo 'Build process not defined yet.'"
+    "build": "echo 'No build process required for this static site.'"
   },
-  "author": "Your Name",
-  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phantom550/My_Portfolio.git"
+  },
+  "author": "Ayush Yadav",
+  "license": "",
   "dependencies": {},
   "devDependencies": {
     "live-server": "^1.2.1"

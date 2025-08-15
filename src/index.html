@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<!-- The 'lang' attribute is crucial for accessibility, specifying the page's primary language. -->
+<!-- 
+  The 'lang' attribute is crucial for accessibility, specifying the page's primary language for screen readers and search engines.
+  The <html> element will also have a `data-theme` attribute (e.g., data-theme="dark") applied by JavaScript to manage the theme.
+-->
 <html lang="en">
 <head>
     <!-- Specifies the character encoding for the document. UTF-8 is the standard. -->
@@ -8,7 +11,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- The title displayed in the browser tab. Important for SEO and user experience. -->
     <title>Ayush Yadav's - Portfolio</title>
-    <!-- Links the external stylesheet that defines the look and feel of the page. -->
+    <!-- A favicon for the browser tab. Replace with your actual icon file. -->
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <!-- Google Fonts: Inter. For use in CSS via --font-primary. -->
+    <!-- `display=swap` ensures that text remains visible in a fallback font while the custom font is loading, improving perceived performance. -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- 
+      Links the external stylesheet. It's placed in the <head> to ensure content is styled before it's rendered, preventing a "flash of unstyled content" (FOUC). 
+    -->
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -17,18 +27,29 @@
       It's perfect for a sidebar navigation.
     -->
     <aside class="sidebar" id="sidebar">
-        <div class="logo">
-            <a href="#home">Ayush Yadav</a>
-        </div>
         <nav aria-label="Main Navigation">
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
-                <li><a href="#portfolio">My Portfolio</a></li>
+                <li><a href="#portfolio">My Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
+        <!-- 
+          Theme switcher button placed at the bottom of the sidebar.
+          - 'aria-label': Provides an accessible name for the button's function.
+          - The two SVGs represent the light (sun) and dark (moon) themes. JavaScript will toggle their visibility based on the current theme.
+          - Using inline SVGs allows them to be styled with CSS (e.g., using `fill="currentColor"`).
+        -->
+        <button id="theme-toggle" class="theme-toggle-button" aria-label="Toggle light and dark theme">
+            <svg class="sun-icon bi bi-sun-fill" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"/>
+</svg>
+            <svg class="moon-icon bi bi-moon-fill" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278"/>
+</svg>
+        </button>
     </aside>
 
     <!-- This div wraps all the main content of the page, positioned next to the sidebar. -->
@@ -43,19 +64,23 @@
 
         <!-- The <main> tag specifies the primary content of the document. -->
         <main>
-            <!-- Home Section (Hero) -->
+            <!-- 
+              Home Section (Hero) 
+              - The `id` attribute is the target for anchor links (e.g., <a href="#home">) and for JavaScript's IntersectionObserver.
+            -->
             <section id="home" class="section hero" aria-labelledby="hero-heading">
+                <!-- The `&amp;` is the HTML entity for an ampersand (&), ensuring the HTML is valid. -->
                 <h1 id="hero-heading">Ayush Yadav</h1>
                 <p>Web Developer &amp; Designer</p>
                 <!-- Social links are placed in the hero section for immediate visibility. -->
                 <div class="social-links">
-                    <a href="https://github.com/phantom550" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/></svg>
+                    <a href="https://github.com/phantom550" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub" >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/></svg>
                     </a>
-                    <a href="https://www.linkedin.com/in/ayush-yadav-333b72294/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <a href="https://www.linkedin.com/in/ayush-yadav-333b72294/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><title>LinkedIn</title><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2ZM8 19H5v-9h3v9ZM6.5 8.25A1.75 1.75 0 1 1 8.25 6.5 1.75 1.75 0 0 1 6.5 8.25ZM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0 0 13 14.19a.66.66 0 0 0 .09.38V19h-3v-9h2.9v1.3a3.11 3.11 0 0 1 2.7-1.4c1.55 0 3.36.86 3.36 3.66Z"></path></svg>
                     </a>
-                    <a href="mailto:ayushyadav913012@email.com" aria-label="Email">
+                    <a href="mailto:ayushyadav913012@email.com" aria-label="Email" title="Email" >
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><title>Email</title><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"></path></svg>
                     </a>
                 </div>
@@ -70,46 +95,89 @@
             <section id="about" class="section animate-on-scroll" aria-labelledby="about-heading">
                 <h2 id="about-heading">About Me</h2>
                 <p>
-                    Hi, I'm <strong>Ayush Yadav</strong>, a web developer and designer based in India.<br>
-                    I specialize in building modern, responsive websites and web applications.<br>
-                    My focus is on clean code, minimal design, and great user experience.
+                    Hi, I'm <strong>Ayush Yadav</strong>, a web developer and designer.
                 </p>
+                <p>I specialize in building modern, responsive websites and web applications.</p>
+                <p>My focus is on clean code, minimal design, and great user experience.</p>
             </section>
 
             <!-- Skills Section -->
             <section id="skills" class="section animate-on-scroll" aria-labelledby="skills-heading">
                 <h2 id="skills-heading">Skills</h2>
+                <h4>Languages</h4>
                 <ul class="skills-list">
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>JavaScript</li>
-                    <li>Blender(3D Design,Modeling,Rendering)</li>
-                    <li>C language</li>
-                    <li>Java</li>
-                    <li>RDBMS</li>
-                    <li>Python</li>
-                    <li>UI/UX Design</li>
+                    <!-- Skill icons are loaded from the devicon CDN, providing a consistent and easy way to display technology logos. -->
+                    <li>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original-wordmark.svg" width="16" height="16" alt=""/>
+          HTML</li>
+                    <li>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" width="16" height="16" alt=""/>
+          CSS</li>
+                    <li>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" width="16" height="16" alt=""/>
+          JavaScript</li>
+                    <li>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg" width="16" height="16" alt=""/>
+          C language</li>
+                    <li>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" width="16" height="16" alt=""/>
+          Java</li>
+                    <li>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" width="16" height="16" alt=""/>
+          Python</li>
+                </ul>
+                <h4>Tools</h4>
+                <ul class="skills-list">
+                    <li>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" width="16" height="16" alt=""/>
+          Git</li>
+                    <li>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" width="16" height="16" alt=""/>
+          GitHub</li>
+                    <li>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" width="16" height="16" alt=""/>
+          Visual Studio</li>
+                    <li>Render</li>
+                </ul>
+                <h4>Environments</h4>
+                <ul class="skills-list">
+                    <li>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/windows11/windows11-original.svg" width="16" height="16" alt=""/>
+          Windows</li>
+                    <li>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-plain.svg" width="16" height="16" alt=""/>
+          Linux</li>
+                </ul>
+                <h4>Additional skills</h4>
+                <ul class="skills-list">
+                    <li>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/blender/blender-original.svg" width="16" height="16" alt=""/>
+          Blender</li>
+                    <li>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" width="16" height="16" alt=""/>
+          PostgreSQL</li>
+                    <li>Microsoft Office 365</li>
                 </ul>
             </section>
 
             <!-- Portfolio Section -->
             <section id="portfolio" class="section animate-on-scroll" aria-labelledby="portfolio-heading">
-                <h2 id="portfolio-heading">My Portfolio</h2>
+                <h2 id="portfolio-heading">My Projects</h2>
                 <div class="project-card">
                     <h3>Personal Portfolio Website</h3>
-                    <p>A minimalist, responsive portfolio to showcase my work and skills. Built with HTML, CSS, and JavaScript.</p>
+                    <p>A minimalist, responsive portfolio to showcase my work and skills. Built with HTML, CSS, and JavaScript.Which you are seeing right now.</p>
                     <!-- 
                       - 'target="_blank"': Opens the link in a new tab.
                       - 'rel="noopener noreferrer"': A security measure to prevent the new tab from accessing the original page's window object.
                     -->
-                    <a href="https://ayush-yadav-portfolio.onrender.com/" target="_blank" rel="noopener noreferrer">Visit Webpage</a><br><br>
-                    <a href="https://github.com/phantom550/My_Portfolio" target="_blank" rel="noopener noreferrer">Visit Github</a>
                 </div>
                 <div class="project-card">
                     <h3>Student Ranker</h3>
                     <p>Made the Frontend for this webpage with the help of HTML, CSS, and JavaScript.</p>
-                    <a href="https://student-ranker.onrender.com/" target="_blank" rel="noopener noreferrer">Visit Webpage</a><br><br>
-                    <a href="https://github.com/sumitpatel-2322/Student-ranker" target="_blank" rel="noopener noreferrer">Visit Github</a>
+                    <div class="project-links">
+                        <a href="https://student-ranker.onrender.com/" target="_blank" rel="noopener noreferrer">Visit Webpage</a>
+                        <a href="https://github.com/sumitpatel-2322/Student-ranker" target="_blank" rel="noopener noreferrer">Visit Github</a>
+                    </div>
                 </div>
             </section>
 
@@ -118,9 +186,10 @@
                 <h2 id="contact-heading">Contact</h2>
                 <p>Let's connect! Feel free to reach out for collaborations or just to say hi.</p>
                 <!-- 
-                    Note: Using "mailto:" for a form action is a simple method but has limitations. It relies on the user having a 
+                    Note: Using "mailto:" for a form action is a simple, client-only method. It relies on the user having a 
                     configured email client and does not provide a confirmation that the message was sent. For a more reliable and 
                     professional solution, this form would typically submit to a server-side endpoint or a third-party service like Formspree or Netlify Forms.
+                    The `enctype="text/plain"` attribute ensures the form data is sent in a human-readable format in the email body.
                 -->
                 <form action="mailto:ayushyadav913012@email.com" method="post" enctype="text/plain">
                     <label for="name">Name</label>
@@ -136,25 +205,26 @@
                 </form>
                 <!-- Social media links with appropriate aria-labels for accessibility. -->
                 <div class="social-links">
-                    <a href="https://github.com/phantom550" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/></svg>
+                    <a href="https://github.com/phantom550" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub" >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/></svg>
                     </a>
-                    <a href="https://www.linkedin.com/in/ayush-yadav-333b72294/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <a href="https://www.linkedin.com/in/ayush-yadav-333b72294/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><title>LinkedIn</title><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2ZM8 19H5v-9h3v9ZM6.5 8.25A1.75 1.75 0 1 1 8.25 6.5 1.75 1.75 0 0 1 6.5 8.25ZM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0 0 13 14.19a.66.66 0 0 0 .09.38V19h-3v-9h2.9v1.3a3.11 3.11 0 0 1 2.7-1.4c1.55 0 3.36.86 3.36 3.66Z"></path></svg>
                     </a>
-                    <a href="mailto:ayushyadav913012@email.com" aria-label="Email">
+                    <a href="mailto:ayushyadav913012@email.com" aria-label="Email" title="Email">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><title>Email</title><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"></path></svg>
                     </a>
                 </div>
             </section>
         </main>
         <!-- The <footer> contains site-wide information like copyright notices and secondary navigation links. -->
+        <!-- It is placed inside #main-content to be part of the flex container, which enables the "sticky footer" layout. -->
         <footer id="footer">
             <div class="footer-content">
-                <p>&copy; 2024 Ayush Yadav. All rights reserved.</p>
+                <p id="copyright">&copy; 2025 Ayush Yadav. All rights reserved.</p>
                 <ul class="footer-links">
                     <li><a href="#about">About</a></li>
-                    <li><a href="#portfolio">My Portfolio</a></li>
+                    <li><a href="#portfolio">My Projects</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>

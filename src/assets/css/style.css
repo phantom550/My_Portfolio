@@ -1,9 +1,9 @@
 /*
 =================================================================
-  iPortfolio CSS File
+  Personal Portfolio CSS
   Author: Ayush Yadav
   - Theme: Modern Slate
-  - Description: This file contains all the styles for the Portfolio,
+  - Description: This file contains all styles for the portfolio,
     including layout, component styling, animations, and responsive design.
 =================================================================
 */
@@ -24,16 +24,38 @@
   --accent-hover: #4338ca; /* indigo-700 */
   --border-color: #e2e8f0; /* slate-200 */
 
+  /* Font variables for easy changes. Ensure fonts are linked in the HTML or imported here. */
+  /* Example: @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap'); */
+  --font-primary: 'Inter', 'Open Sans', Arial, sans-serif;
+
   /* Layout variables for consistency and easy maintenance. */
   --sidebar-width: 250px;
+
+  /* A separate variable for mobile sidebar width for easier responsive adjustments. */
+  --sidebar-width-mobile: 220px;
 
   /* A standardized transition curve for smooth, consistent animations. */
   --transition-curve: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Dark Theme Color Palette */
+/* When the <html> element has the 'data-theme="dark"' attribute, these variables will override the defaults in :root. */
+[data-theme="dark"] {
+  --bg-primary: #1e293b;     /* slate-800 */
+  --bg-secondary: #334155;   /* slate-700 */
+  --text-primary: #f1f5f9;   /* slate-100 */
+  --text-secondary: #94a3b8; /* slate-400 */
+  --accent-primary: #818cf8; /* indigo-400 */
+  --accent-hover: #a5b4fc;   /* indigo-300 */
+  --border-color: #475569;   /* slate-600 */
+}
+
 /* A more robust and predictable box-sizing model. */
 html {
-  /* Ensures smooth scrolling behavior across the entire page, especially for anchor links. */
+  /* 
+    Ensures smooth scrolling behavior across the entire page, especially for anchor links (#).
+    This is a modern CSS feature that replaces JavaScript-based smooth scrolling for simple cases.
+  */
   scroll-behavior: smooth;
   box-sizing: border-box;
 }
@@ -44,7 +66,7 @@ html {
 /* General body styles */
 body {
   margin: 0;
-  font-family: 'Inter', 'Open Sans', Arial, sans-serif;
+  font-family: var(--font-primary);
   background: var(--bg-primary);
   color: var(--text-primary);
   min-height: 100vh;
@@ -65,7 +87,12 @@ body {
 
 /* The <main> element holds all the primary sections of the page. */
 main {
-  flex: 1; /* Allows the main content to grow and push the footer down. */
+  /* 
+    By setting 'flex: 1', this element will grow to fill any available vertical space
+    within its flex container (#main-content). This is the key to the "sticky footer" layout,
+    ensuring the footer is pushed to the bottom of the viewport even on pages with little content.
+  */
+  flex: 1;
   margin-left: var(--sidebar-width);
   padding: 48px 32px 32px 32px;
   background: var(--bg-primary);
@@ -83,6 +110,21 @@ main {
   text-align: center;
 }
 
+.hero h1 {
+  font-size: 3.5em;
+  margin-bottom: 8px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.hero p {
+  font-size: 1.4em;
+  color: var(--text-secondary);
+  margin-top: 0;
+  margin-bottom: 24px; /* Add space between subtitle and social links */
+  font-weight: 500;
+}
+
 /* Styling for content sections (About, Skills, etc.), excluding the hero. */
 .section:not(.hero) {
   background: var(--bg-secondary);
@@ -91,7 +133,10 @@ main {
   padding: 32px;
 }
 
-/* Add space *between* sections for better flow, instead of large margins around them. */
+/* 
+  The adjacent sibling combinator (+) adds space *between* sections for better visual flow.
+  This is more robust than adding `margin-bottom` to all sections, as it avoids extra space after the last section.
+*/
 .section + .section {
   margin-top: 48px;
 }
@@ -102,12 +147,14 @@ main {
 */
 
 /* Initial state for elements that will animate on scroll. They start invisible and slightly moved down. */
+/* This class is added to elements in the HTML that should animate when they enter the viewport. */
 .animate-on-scroll {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.8s var(--transition-curve), transform 0.8s var(--transition-curve);
 }
 
+/* The 'visible' class is added by JavaScript's IntersectionObserver to trigger the transition. */
 .animate-on-scroll.visible {
   opacity: 1;
   transform: translateY(0);
@@ -139,6 +186,13 @@ main {
   letter-spacing: 0.5px;
 }
 
+/* Vertically align the skill icons with the text for a cleaner look. */
+.skills-list li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
 /* --- Portfolio Cards --- */
 .project-card {
   background: var(--bg-primary);
@@ -164,6 +218,13 @@ main {
   color: var(--accent-hover);
 }
 
+/* Container for project links to replace <br> tags. Uses flexbox for clean spacing. */
+.project-links {
+  display: flex;
+  gap: 16px; /* Provides space between the links */
+  margin-top: 12px;
+}
+
 /* --- Contact Form --- */
 form label {
   display: block;
@@ -185,7 +246,8 @@ form input, form textarea {
   transition: border-color 0.3s var(--transition-curve), box-shadow 0.3s var(--transition-curve);
 }
 
-form input:focus, form textarea:focus {
+/* Use :focus-visible for better accessibility, showing outlines only for keyboard navigation. */
+form input:focus-visible, form textarea:focus-visible {
   border-color: var(--accent-primary);
   outline: none;
   box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
@@ -205,6 +267,12 @@ form button {
 
 form button:hover {
   background: var(--accent-hover);
+}
+
+/* Spacing for subheadings within sections, replacing <br> tags. */
+.section h4 {
+  margin-top: 24px;
+  margin-bottom: 12px;
 }
 
 /* --- Social Links --- */
@@ -239,20 +307,33 @@ form button:hover {
   */
   background: var(--bg-secondary);
   border-top: 1px solid var(--border-color);
-  padding: 18px 0 10px;
+  padding: 24px 0;
   margin-top: 32px;
+  /* Add transition for smooth color change on theme toggle */
+  transition: background-color 0.3s var(--transition-curve), border-color 0.3s var(--transition-curve);
 }
 
 .footer-content {
-  text-align: center;
+  /* Use flexbox for better alignment of footer content on larger screens */
+  display: flex;
+  flex-direction: column; /* Default stack on mobile */
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px; /* Add some horizontal padding */
+  max-width: 1200px; /* Constrain width for very large screens */
+  margin: 0 auto; /* Center the content */
   color: var(--text-secondary);
-  font-size: 0.98em;
+  font-size: 0.9em;
+}
+
+.footer-content p {
+    margin: 0; /* Remove default paragraph margin */
 }
 
 .footer-links {
   list-style: none;
   padding: 0;
-  margin: 10px 0 0;
+  margin: 0; /* Remove default margin */
   display: flex;
   justify-content: center;
   gap: 18px;
@@ -270,6 +351,7 @@ form button:hover {
 }
 
 /* --- Sidebar / Main Navigation --- */
+/* The sidebar is fixed to the left side of the viewport and always visible on desktop. */
 .sidebar {
   width: var(--sidebar-width);
   left: 0;
@@ -278,32 +360,16 @@ form button:hover {
   color: var(--text-primary);
   padding: 32px 0 0;
   position: fixed;
-  height: 100vh;
+  height: 100%; /* Use 100% or 100vh; 100% is often more flexible. */
   border-right: 1px solid var(--border-color);
   box-shadow: 2px 0 8px rgba(0,0,0,0.02);
   z-index: 1000;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center; /* Vertically centers the nav and theme toggle */
+  align-items: center; /* Keeps items centered horizontally */
+  gap: 64px; /* Adds space between the navigation and the theme toggle */
   transition: transform 0.4s var(--transition-curve);
-}
-
-.sidebar .logo {
-  margin-top: 48px;
-  margin-bottom: 48px;
-}
-
-.sidebar .logo a {
-  color: var(--accent-primary);
-  font-size: 1.6em;
-  text-decoration: none;
-  font-weight: 700;
-  letter-spacing: 1px;
-  transition: color 0.3s var(--transition-curve);
-}
-
-.sidebar .logo a:hover {
-  color: var(--accent-hover);
 }
 
 .sidebar nav ul {
@@ -328,11 +394,47 @@ form button:hover {
 }
 
 .sidebar nav ul li a:hover,
-.sidebar nav ul li a:focus,
 .sidebar nav ul li a.active {
   background: var(--accent-primary);
   color: var(--bg-secondary);
 }
+
+.sidebar nav ul li a:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+/* --- Theme Toggle --- */
+.theme-toggle-button {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%; /* Makes it a circle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s var(--transition-curve), color 0.3s var(--transition-curve);
+}
+
+.theme-toggle-button:hover {
+  background: var(--border-color);
+  color: var(--text-primary);
+}
+
+.theme-toggle-button svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* Logic to show the correct icon based on the current theme */
+.moon-icon { display: block; }
+.sun-icon { display: none; }
+
+[data-theme="dark"] .moon-icon { display: none; }
+[data-theme="dark"] .sun-icon { display: block; }
 
 /* --- Hamburger Menu (Mobile) --- */
 .hamburger {
@@ -359,8 +461,11 @@ form button:hover {
 
 /* Styles for the hamburger button when the menu is open. */
 .hamburger.toggled {
-  /* Move to the right, inside the sidebar. Based on sidebar width of 220px on mobile. */
-  left: 146px; 
+  /* 
+    Moves the button to the right to be visible when the sidebar is open.
+    The calculation `var(--sidebar-width-mobile) - 74px` positions it inside the opened sidebar with some padding from the right edge.
+  */
+  left: calc(var(--sidebar-width-mobile) - 74px);
   font-size: 36px; /* Make the 'X' a bit larger and more prominent. */
   padding: 4px 14px; /* Adjust padding to keep the button size consistent. */
 }
@@ -385,12 +490,23 @@ form button:hover {
     padding: 24px 12px;
   }
 
+  /* Adjust hero text sizes for smaller screens */
+  .hero h1 {
+    font-size: 2.5em;
+  }
+
+  .hero p {
+    font-size: 1.2em;
+  }
+
+  /* On mobile, the sidebar is hidden off-screen by default. */
   .sidebar {
     transform: translateX(-100%);
-    width: 220px;
+    width: var(--sidebar-width-mobile);
     padding: 24px 0 0;
   }
 
+  /* The 'active' class, toggled by JavaScript, slides the sidebar into view. */
   .sidebar.active {
     transform: translateX(0);
   }
